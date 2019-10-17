@@ -1,11 +1,11 @@
 package Sabina;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
+    static ArrayList<Person> personRecord = new ArrayList<>();
 
 
         public static void main (String[] args) {
@@ -20,6 +20,11 @@ public class Main {
                     case "help":
                         showHelp();
                         break;
+                    case "create":
+                        createRecord();
+                    case "list":
+                        listRecords();
+                        break;
                     default:
                         System.out.println("Error: Unknown command");
 
@@ -27,6 +32,49 @@ public class Main {
 
     }
 
+    }
+
+
+
+
+
+    private static void createRecord() {
+        System.out.println("type> ");
+        String type = scan.next();
+        switch (type){
+            case "person":
+                createPerson();
+                break;
+            default:
+                System.out.println("Unknown record type");
+        }
+    }
+
+    private static void createPerson() {
+        System.out.println("Name>");
+        String name = scan.next();
+        System.out.println("Surname>");
+        String surname = scan.next();
+        System.out.println("Phone>");
+        String phone = scan.next();
+
+        Person p = new Person();
+        p.setName(name);
+        p.setSurname(surname);
+        p.setPhone(phone);
+        personRecord.add(p);
+
+
+    }
+
+    private static void listRecords() {
+        for (Person p : personRecord) {
+            System.out.printf("%d %s %s %s\n",
+                    p.getId(),
+                    p.getName(),
+                    p.getSurname(),
+                    p.getPhone());
+        }
     }
 
 
@@ -39,13 +87,3 @@ public class Main {
 
 
 
- /* MY IDEAS String cmd = askString("Please enter your command: (help / exit)");
-
-        switch(cmd) {
-            case "exit":
-                return;
-            case "help":
-                showHelp();
-                break;
-
-        } */
