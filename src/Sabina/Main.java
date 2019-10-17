@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner scan = new Scanner(System.in);
-    static ArrayList<Person> personRecord = new ArrayList<>();
+    static final Scanner scan = new Scanner(System.in);
+    static ArrayList<Record> personRecord = new ArrayList<>();
+
 
 
         public static void main (String[] args) {
@@ -22,6 +23,8 @@ public class Main {
                         break;
                     case "create":
                         createRecord();
+                    case "note":
+                        printNote();
                     case "list":
                         listRecords();
                         break;
@@ -34,8 +37,20 @@ public class Main {
 
     }
 
+    private static void printNote() {
+        for (Record n : personRecord) {
+            System.out.println(n);
+        }
+    }
 
+    private static void createNote() {
+        System.out.println("note> ");
+        String type = scan.next();
+        Note n = new Note();
+        n.setText();
+        personRecord.add(n);
 
+    }
 
 
     private static void createRecord() {
@@ -51,29 +66,22 @@ public class Main {
     }
 
     private static void createPerson() {
-        System.out.println("Name>");
-        String name = scan.next();
-        System.out.println("Surname>");
-        String surname = scan.next();
-        System.out.println("Phone>");
-        String phone = scan.next();
-
         Person p = new Person();
-        p.setName(name);
-        p.setSurname(surname);
-        p.setPhone(phone);
+        p.askInfo();
+
         personRecord.add(p);
 
 
     }
 
     private static void listRecords() {
-        for (Person p : personRecord) {
-            System.out.printf("%d %s %s %s\n",
+        for (Record p : personRecord) {
+         /*   System.out.printf("%d %s %s %s\n",
                     p.getId(),
                     p.getName(),
                     p.getSurname(),
-                    p.getPhone());
+                    p.getPhone()); */
+            System.out.println(p);
         }
     }
 

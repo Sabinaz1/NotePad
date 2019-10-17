@@ -1,20 +1,40 @@
 package Sabina;
 
-public class Person {
-    private static int counter = 0;
-    private int id;
+public class Person extends Record{
+
+
     private String name;
     private String surname;
     private String phone;
+    private String email;
 
-    public Person() {
-        Person.counter++;
-        this.id = counter;
+
+
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + getId() +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 
-    public int getId() {
-        return id;
+    public void askInfo() {
+        System.out.println("Name>");
+        name = Main.scan.next();
+        System.out.println("Surname>");
+        surname = Main.scan.next();
+        System.out.println("Phone>");
+        phone = Main.scan.next();
+        System.out.println("Email>");
+        email = Main.scan.next();
     }
+
+
+
 
 
 
