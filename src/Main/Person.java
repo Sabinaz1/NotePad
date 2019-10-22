@@ -1,4 +1,4 @@
-package Sabina;
+package Main;
 
 public class Person extends Record{
 
@@ -11,17 +11,8 @@ public class Person extends Record{
 
 
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + getId() +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 
+    @Override
     public void askInfo() {
         System.out.println("Name>");
         name = Main.scan.next();
@@ -33,6 +24,13 @@ public class Person extends Record{
         email = Main.scan.next();
     }
 
+    @Override
+    public boolean contains(String str) {
+        return name.contains(str)
+                || surname.contains(str)
+                || phone.contains(str)
+                || email.contains(str);
+        }
 
 
 
@@ -60,5 +58,24 @@ public class Person extends Record{
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + getId() +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

@@ -1,4 +1,4 @@
-package Sabina;
+package Main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,6 +10,7 @@ public class Main {
 
 
         public static void main (String[] args) {
+            scan.useDelimiter("\n");
             System.out.println("Enter a command. Type 'help' for help");
             for (; ;) {
                 System.out.println(">");
@@ -23,11 +24,12 @@ public class Main {
                         break;
                     case "create":
                         createRecord();
-                    case "note":
-                        printNote();
+                        break;
                     case "list":
                         listRecords();
                         break;
+                    case "find":
+                        findRecords();
                     default:
                         System.out.println("Error: Unknown command");
 
@@ -37,18 +39,13 @@ public class Main {
 
     }
 
-    private static void printNote() {
-        for (Record n : personRecord) {
-            System.out.println(n);
-        }
-    }
 
-    private static void createNote() {
-        System.out.println("note> ");
-        String type = scan.next();
-        Note n = new Note();
-        n.setText();
-        personRecord.add(n);
+
+    private static void findRecords() {
+        for (str : personRecord) {
+            System.out.println("true");
+        }
+
 
     }
 
@@ -58,19 +55,28 @@ public class Main {
         String type = scan.next();
         switch (type){
             case "person":
-                createPerson();
+                createRecord(new Person());
                 break;
+            case "note":
+                createRecord(new Note());
+                break;
+            case "alarm":
+                createRecord(new Alarm());
+                break;
+
             default:
                 System.out.println("Unknown record type");
         }
     }
 
-    private static void createPerson() {
-        Person p = new Person();
-        p.askInfo();
 
-        personRecord.add(p);
 
+
+
+
+    private static void createRecord(Record r) {
+            r.askInfo();
+            personRecord.add(r);
 
     }
 
