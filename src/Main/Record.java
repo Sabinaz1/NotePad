@@ -13,18 +13,14 @@ public abstract class Record {
 
     public abstract void askInfo();
 
-
-
-    public int getId() {
-        return id;
-    }
     public boolean contains(String str) {
         String strID = Integer.toString(id);
         return strID.contains(str);
     }
 
-
-    public abstract boolean contains(String str);
+   public int getId() {
+        return id;
+   }
 }
 
 

@@ -6,8 +6,14 @@ public class Alarm extends Note {
     @Override
     public void askInfo() {
         super.askInfo();
-        System.out.println("Time>");
+        System.out.println("Time> ");
         time = Main.scan.next();
+    }
+
+    @Override
+    public boolean contains(String str) {
+        return super.contains(str)
+                || time.contains(str);
     }
 
     public String getTime() {
@@ -27,11 +33,7 @@ public class Alarm extends Note {
                 '}';
     }
 
-    @Override
-    public boolean contains(String str) {
-            return super.contains(str)
-            ||
-        }
+
 
 
 

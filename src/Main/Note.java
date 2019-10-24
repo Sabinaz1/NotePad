@@ -5,25 +5,22 @@ public class Note extends Record {
 
     @Override
     public void askInfo() {
-        System.out.println("Text>");
+        System.out.println("Text> ");
         text = Main.scan.next();
     }
 
     @Override
     public boolean contains(String str) {
             return super.contains(str)
-                    || return super.contains(str);
-                return true;
+                    || text.contains(str);
             }
 
-            
-
-
     public String getText() {
+
         return text;
     }
 
-    public void setText() {
+    public void setText(String text) {
         this.text = text;
     }
 
