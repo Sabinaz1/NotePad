@@ -81,10 +81,15 @@ public class Main {
             case "alarm":
                 createRecord(new Alarm());
                 break;
+            case "reminder":
+                createRecord(new Reminder());
+                break;
             default:
                 System.out.println("Error: Unknown record type");
         }
     }
+
+
 
     private static void createRecord(Record r) {
         r.askInfo();
