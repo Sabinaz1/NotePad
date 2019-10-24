@@ -2,7 +2,6 @@ package Main;
 
 public class Person extends Record{
 
-
     private String name;
     private String surname;
     private String phone;
@@ -14,25 +13,24 @@ public class Person extends Record{
 
     @Override
     public void askInfo() {
-        System.out.println("Name>");
+        System.out.print("Name> ");
         name = Main.scan.next();
-        System.out.println("Surname>");
+        System.out.print("Surname> ");
         surname = Main.scan.next();
-        System.out.println("Phone>");
+        System.out.print("Phone> ");
         phone = Main.scan.next();
-        System.out.println("Email>");
+        System.out.print("Email> ");
         email = Main.scan.next();
     }
 
     @Override
     public boolean contains(String str) {
-        return name.contains(str)
+        return super.contains(str)
+                || name.contains(str)
                 || surname.contains(str)
                 || phone.contains(str)
                 || email.contains(str);
-        }
-
-
+    }
 
 
 

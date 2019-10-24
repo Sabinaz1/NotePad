@@ -29,14 +29,38 @@ public class Main {
                     break;
                 case "find":
                     findRecords();
+                    break;
+                case "delete":
+                    deleteRecords();
+                    break;
                 default:
                     System.out.println("Error: Unknown command");
+
 
             }
 
         }
 
     }
+
+
+    private static void deleteRecords() {
+        listRecords();
+        System.out.print("Enter the ID of the record you would like to delete: ");
+        int toDelete = scan.nextInt();
+        for (int i = 0; i < records.size(); i++) {
+
+            Record r = records.get(i);
+
+            if (toDelete == r.getId()) {
+                records.remove(i);
+                break;
+            }
+        }
+
+
+    }
+
 
     private static void listRecords() {
         for (Record r : records) {
