@@ -2,7 +2,7 @@ package Main;
 
 public class Person extends Record{
 
-    private String name;
+    private  String name;
     private String surname;
     private String phone;
     private String email;

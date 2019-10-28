@@ -15,6 +15,7 @@ public class Note extends Record {
                     || text.contains(str);
             }
 
+
     public String getText() {
 
         return text;

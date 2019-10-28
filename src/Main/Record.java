@@ -18,6 +18,10 @@ public abstract class Record {
         return strID.contains(str);
     }
 
+
+
+
+
    public int getId() {
         return id;
    }

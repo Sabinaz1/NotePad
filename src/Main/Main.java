@@ -1,6 +1,7 @@
 package Main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -33,6 +34,10 @@ public class Main {
                 case "delete":
                     deleteRecords();
                     break;
+                case "clean":
+                    cleanRecords();
+                    break;
+
                 default:
                     System.out.println("Error: Unknown command");
 
@@ -41,6 +46,18 @@ public class Main {
 
         }
 
+    }
+
+    private static void cleanRecords() {
+        System.out.print("clean> ");
+        String clean = scan.next();
+
+        Iterator<Record> cleanIterator = records.iterator();
+        while(cleanIterator.hasNext()) {
+            Record nextRecord = cleanIterator.next();
+            if(nextRecord.contains(clean));
+            records.remove(nextRecord);
+        }
     }
 
 
