@@ -5,16 +5,14 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
-    static final Scanner scan = new Scanner(System.in);
     static ArrayList<Record> records = new ArrayList<>();
 
 
     public static void main(String[] args) {
-        scan.useDelimiter("\n");
         System.out.println("Enter a command. Type 'help' for help.");
         for (; ; ) {
             System.out.println("> ");
-            String cmd = scan.next();
+            String cmd = Asker.askString("cmd");
             switch (cmd) {
                 case "exit":
                     System.out.println("Goodbye!");
@@ -37,6 +35,9 @@ public class Main {
                 case "clean":
                     cleanRecords();
                     break;
+                case "expired":
+                    listExpiredRecords();
+                    break;
 
                 default:
                     System.out.println("Error: Unknown command");
@@ -48,9 +49,19 @@ public class Main {
 
     }
 
+    private static void listExpiredRecords() {
+        for (Record r : records) {
+            if (r instanceof Expirable) {
+                Expirable e = (Expirable) r;
+                if (e.isExpired()) {
+                    System.out.println(e);
+                }
+            }
+        }
+    }
+
     private static void cleanRecords() {
-        System.out.print("clean> ");
-        String clean = scan.next();
+        String clean = Asker.askString("clean");
 
         Iterator<Record> cleanIterator = records.iterator();
         while(cleanIterator.hasNext()) {
@@ -63,8 +74,7 @@ public class Main {
 
     private static void deleteRecords() {
         listRecords();
-        System.out.print("Enter the ID of the record you would like to delete: ");
-        int toDelete = scan.nextInt();
+        int toDelete = Asker.askInt("Enter the ID of the record you would like to delete ");
         for (int i = 0; i < records.size(); i++) {
 
             Record r = records.get(i);
@@ -86,8 +96,7 @@ public class Main {
     }
 
     private static void createRecord() {
-        System.out.print("type> ");
-        String type = scan.next();
+        String type = Asker.askString("type ");
         switch (type) {
             case "person":
                 createRecord(new Person());
@@ -119,8 +128,7 @@ public class Main {
 
 
     private static void findRecords() {
-        System.out.print("substring> ");
-        String str = scan.next();
+        String str = Asker.askString("substring ");
         for (Record r : records) {
             if (r.contains(str)) {
                 System.out.println(r);
