@@ -38,6 +38,9 @@ public class Main {
                 case "expired":
                     listExpiredRecords();
                     break;
+                case "dismiss":
+                    dismissRecord();
+                    break;
                 default:
                     System.out.println("Error: Unknown command");
 
@@ -48,6 +51,19 @@ public class Main {
 
     }
 
+    private static void dismissRecord() {
+        int id = Asker.askInt("id");
+        for (Record r : records) {
+            if (r instanceof Expirable && r.getId() == id) {
+                Expirable e = (Expirable) r;
+
+                    e.dismiss();
+                    break;
+
+
+            }
+        }
+    }
     private static void listExpiredRecords() {
         for (Record r : records) {
             if (r instanceof Expirable) {

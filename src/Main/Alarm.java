@@ -1,15 +1,19 @@
 package Main;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Alarm extends Note implements Expirable {
-    public LocalTime time;
+    private LocalTime time;
+    private LocalDate dismissedAt;
 
     @Override
     public void askInfo() {
         super.askInfo();
         time = Asker.askTime("Time");
     }
+
+
 
     @Override
     public boolean contains(String str) {
@@ -36,7 +40,19 @@ public class Alarm extends Note implements Expirable {
 
     @Override
     public boolean isExpired() {
+        if (LocalDate.now().equals(dismissedAt)) {
+        //if (dismissedAt.equals(LocalDate.now())) { 2nd version (simply changing places)
+            return false;
+        }
         return LocalTime.now().isAfter(time);
+    }
+
+    @Override
+    public void dismiss() {
+        dismissedAt = LocalDate.now();
+
+
+
     }
 }
 

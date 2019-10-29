@@ -1,17 +1,37 @@
 package Main;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Reminder extends Alarm implements Expirable {
     public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd.MM.uuuu");
     private LocalDate date;
+    private boolean dismissed = false;
+
+
 
 
     @Override
     public boolean isExpired() {
-        return true;
+        if (dismissed) {
+            return false;
+        }
+        var dt = LocalDateTime.of(date, getTime());
+        return LocalDateTime.now().isAfter(dt);
+
     }
+
+    @Override
+    public void dismiss() {
+
+           dismissed = true;
+
+
+    }
+
+
 
     @Override
     public void askInfo() {
