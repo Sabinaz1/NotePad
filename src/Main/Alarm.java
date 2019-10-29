@@ -36,7 +36,7 @@ public class Alarm extends Note implements Expirable {
 
     @Override
     public boolean isExpired() {
-        return false;
+        return LocalTime.now().isAfter(time);
     }
 }
 

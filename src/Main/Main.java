@@ -38,7 +38,6 @@ public class Main {
                 case "expired":
                     listExpiredRecords();
                     break;
-
                 default:
                     System.out.println("Error: Unknown command");
 
@@ -96,7 +95,7 @@ public class Main {
     }
 
     private static void createRecord() {
-        String type = Asker.askString("type ");
+        String type = Asker.askString("type");
         switch (type) {
             case "person":
                 createRecord(new Person());
