@@ -75,16 +75,21 @@ public class Main {
         }
     }
 
-    private static void cleanRecords() {
-        String clean = Asker.askString("clean");
-
-        Iterator<Record> cleanIterator = records.iterator();
-        while(cleanIterator.hasNext()) {
-            Record nextRecord = cleanIterator.next();
-            if(nextRecord.contains(clean));
-            records.remove(nextRecord);
+   /* private static void cleanRecords() {
+        String substr = Asker.askString("substring");
+        Iterator<Record> iterator = records.iterator();
+        while(iterator.hasNext()) {
+            Record r = iterator.next();
+            if(r.contains(substr));
+            iterator.remove();
         }
+    } */
+
+    private static void cleanRecords() {
+        String substr = Asker.askString("substring");
+        records.removeIf(r -> r.contains(substr));
     }
+
 
 
     private static void deleteRecords() {

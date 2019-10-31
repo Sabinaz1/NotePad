@@ -25,10 +25,7 @@ public class Reminder extends Alarm implements Expirable {
 
     @Override
     public void dismiss() {
-
            dismissed = true;
-
-
     }
 
 
@@ -60,7 +57,7 @@ public class Reminder extends Alarm implements Expirable {
                 ", text='" + getText() + '\'' +
                 ", time = " + getTime().format(Asker.TIME_FORMAT) +
                 ", date = " + date.format(Asker.DATE_FORMAT) +
-
+                ", dismissed='" + dismissed + '\'' +
                 '}';
     }
 
